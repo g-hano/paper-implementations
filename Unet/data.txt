@@ -1,2 +1,3 @@
+https://www.kaggle.com/competitions/carvana-image-masking-challenge
 train_hq.zip
 train_masks.zip
