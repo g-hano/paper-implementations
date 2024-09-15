@@ -1,7 +1,7 @@
 I implemented UNet from scratch using PyTorch for 2 tasks that I was into:
 - Image Segmentation:
     - I trained the model for only 25 epochs with 1e-4 learning rate
-    - ![seg.png](Unet/images/seg.png)
+    - ![seg.png](images/seg.png)
 - Image Generation:
     - Trained 2 models
     - **First Model**
@@ -19,17 +19,17 @@ I implemented UNet from scratch using PyTorch for 2 tasks that I was into:
 
   <div style="text-align: center;">
     <h3>Target Image</h3>
-    <img src="Unet/images/f1.png" alt="Target Image" style="width: 300px; border: 2px solid #ddd; border-radius: 8px;">
+    <img src="images/f1.png" alt="Target Image" style="width: 300px; border: 2px solid #ddd; border-radius: 8px;">
   </div>
 
   <div style="text-align: center;">
     <h3>Model 1 Generated</h3>
-    <img src="Unet/images/fg1.png" alt="Model 1 Generated" style="width: 300px; border: 2px solid #ddd; border-radius: 8px;">
+    <img src="images/fg1.png" alt="Model 1 Generated" style="width: 300px; border: 2px solid #ddd; border-radius: 8px;">
   </div>
 
   <div style="text-align: center;">
     <h3>Model 2 Generated</h3>
-    <img src="Unet/images/fg2.png" alt="Model 2 Generated" style="width: 300px; border: 2px solid #ddd; border-radius: 8px;">
+    <img src="images/fg2.png" alt="Model 2 Generated" style="width: 300px; border: 2px solid #ddd; border-radius: 8px;">
   </div>
 
 </div>
