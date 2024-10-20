@@ -224,6 +224,7 @@ class VisionMLP(nn.Module):
         return x
 
 class VisionAttention(nn.Module):
+    # Qwen2 VL 2B Instruct uses SDPA attention, so I implemented it only.
     def __init__(self, dim: int, num_heads: int = 16) -> None:
         super().__init__()
         self.num_heads = num_heads
@@ -249,7 +250,8 @@ class VisionAttention(nn.Module):
         print(f"{q.dtype=}")
         print(f"{k.dtype=}")
         print(f"{v.dtype=}") 
-
+        
+        # torch.OutOfMemoryError:
         attn_output = F.scaled_dot_product_attention(q, k, v, attention_mask, dropout_p=0.0)
         attn_output = attn_output.transpose(0, 1)
         attn_output = attn_output.reshape(seq_length, -1)
@@ -430,6 +432,7 @@ def repeat_kv(hidden_states, n_rep):
     return hidden_states
 
 class Qwen2VLAttention(nn.Module):
+    # Qwen2 VL 2B Instruct uses SDPA attention, so I implemented it only.
     def __init__(self, config: Qwen2VLConfig, layer_idx=None):
         super().__init__()
         self.config = config
