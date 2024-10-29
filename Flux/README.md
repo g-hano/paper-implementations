@@ -27,7 +27,7 @@ flux_model_name = "flux-dev"
 
 ---
 
-### 2. Pumpkin Cat
+### 2. Venom-Spiderman
 ![VenomSpiderman](flux_generated/venom-spiderman.webp)
 
 **Prompt:**
