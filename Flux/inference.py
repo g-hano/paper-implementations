@@ -13,8 +13,9 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 t5 = HFEmbedder("google/t5-v1_1-xxl", max_length=256, torch_dtype=torch.bfloat16).to(device)
 clip = HFEmbedder("openai/clip-vit-large-patch14", max_length=77, torch_dtype=torch.bfloat16).to(device)
-model = load_flow_model("flux-schnell", device=device)
-ae = load_ae("flux-schnell", device=device)
+flux_model_name = "flux-schnell"
+model = load_flow_model(flux_model_name, device=device)
+ae = load_ae(flux_model_name, device=device)
 
 width: int = 512
 heigth: int = 512
