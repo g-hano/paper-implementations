@@ -20,7 +20,7 @@ flux_model_name = "flux-dev"
 ## Generated Images
 
 ### 1. Desert Cat
-![Cat in desert](Flux/flux_generated/catdesert.webp)
+![Cat in desert](flux_generated/catdesert.webp)
 
 **Prompt:**
 "Cat in the middle of desert."
@@ -28,7 +28,7 @@ flux_model_name = "flux-dev"
 ---
 
 ### 2. Pumpkin Cat
-![VenomSpiderman](Flux/flux_generated/venom-spiderman.webp)
+![VenomSpiderman](flux_generated/venom-spiderman.webp)
 
 **Prompt:**
 "Venom cuddles spiderman"
