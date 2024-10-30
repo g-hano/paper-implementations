@@ -40,7 +40,7 @@ noisy_image = get_noise(
 timesteps = get_schedule(
     num_steps=num_steps,
     image_seq_len=noisy_image.shape[-1] * noisy_image.shape[-2] // 4,
-    shift=False
+    shift=not (flux_model_name=="flux-schnell")
 )
 
 inp = prepare(t5=t5, clip=clip, img=noisy_image, prompt=prompt)
