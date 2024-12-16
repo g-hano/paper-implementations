@@ -28,7 +28,7 @@ The model was trained on the OPUS Books dataset using:
 - Mixed training strategy (both translation directions in each batch)
 
 ### Training Progress
-![Training Loss Plot](machine-translation/plot/loss_plot.png)
+<img src="https://github.com/g-hano/paper-implementations/blob/main/machine-translation/plot/loss_plot.png" width="800"/>
 
 ## Project Structure
 
