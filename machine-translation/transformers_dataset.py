@@ -1,6 +1,5 @@
 import torch
 from torch.utils.data import Dataset
-from datasets import load_dataset
 
 from spacy.lang.fr import French
 from spacy.lang.ru import Russian
@@ -182,9 +181,9 @@ class CombinedBilingualDataset(Dataset):
         return {
             # fr→ru direction
             "fr2ru": {
-                "encoder_input": fr2ru_encoder,  # (seq_len)
-                "decoder_input": fr2ru_decoder,  # (seq_len)
-                "label": fr2ru_label,  # (seq_len)
+                "encoder_input": fr2ru_encoder,
+                "decoder_input": fr2ru_decoder,
+                "label": fr2ru_label,
                 "src_text": fr_text,
                 "tgt_text": ru_text,
                 "src_lang": 'fr',
@@ -193,9 +192,9 @@ class CombinedBilingualDataset(Dataset):
             },
             # ru→fr direction
             "ru2fr": {
-                "encoder_input": ru2fr_encoder,  # (seq_len)
-                "decoder_input": ru2fr_decoder,  # (seq_len)
-                "label": ru2fr_label,  # (seq_len)
+                "encoder_input": ru2fr_encoder,
+                "decoder_input": ru2fr_decoder,
+                "label": ru2fr_label,
                 "src_text": ru_text,
                 "tgt_text": fr_text,
                 "src_lang": 'ru',
@@ -210,12 +209,9 @@ def create_tokenizers(dataset):
     fr_tokenizer = SpacyTokenizerWrapper(fr.tokenizer)
     ru_tokenizer = SpacyTokenizerWrapper(ru.tokenizer)
 
-    # Build vocabularies
     print("Building vocabularies...")
     for item in tqdm(dataset):
-        # Process French text
         fr_tokenizer.encode(item['translation']['fr'])
-        # Process Russian text
         ru_tokenizer.encode(item['translation']['ru'])
         
     print(f"French vocabulary size: {len(fr_tokenizer.vocab)}")
@@ -240,8 +236,8 @@ def get_tokenizers(dataset=None, force_rebuild=False):
         dataset: Dataset to build vocabulary from (optional if loading from file)
         force_rebuild: If True, rebuilds tokenizers even if saved files exist
     """
-    fr_path = r'C:/Users/Cihan/Desktop/llamaindex/machine-translation/tokenizers/fr_tokenizer.json'
-    ru_path = r'C:/Users/Cihan/Desktop/llamaindex/machine-translation/tokenizers/ru_tokenizer.json'
+    fr_path = r'./tokenizers/fr_tokenizer.json'
+    ru_path = r'./tokenizers/ru_tokenizer.json'
     
     if not force_rebuild and Path(fr_path).exists() and Path(ru_path).exists():
         print("Loading existing tokenizers...")
@@ -265,25 +261,16 @@ def get_tokenizers(dataset=None, force_rebuild=False):
         fr_tokenizer = SpacyTokenizerWrapper(fr.tokenizer)
         ru_tokenizer = SpacyTokenizerWrapper(ru.tokenizer)
 
-        # Build vocabularies
         print("Building vocabularies...")
         for item in tqdm(dataset):
-            # Process French text
             fr_tokenizer.encode(item['translation']['fr'])
-            # Process Russian text
             ru_tokenizer.encode(item['translation']['ru'])
             
         print(f"French vocabulary size: {len(fr_tokenizer.vocab)}")
         print(f"Russian vocabulary size: {len(ru_tokenizer.vocab)}")
         
-        # Save tokenizers
         print("Saving tokenizers...")
         fr_tokenizer.save(fr_path)
         ru_tokenizer.save(ru_path)
         
         return fr_tokenizer, ru_tokenizer
-
-#dataset = load_dataset("opus_books", "fr-ru", split="all")
-#fr_tokenizer, ru_tokenizer = create_tokenizers(dataset)
-#fr_tokenizer, ru_tokenizer = get_tokenizers(dataset=dataset)
-#combined = create_combined_dataset(dataset, fr_tokenizer, ru_tokenizer, 250)
