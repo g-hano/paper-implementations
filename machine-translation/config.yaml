@@ -1,0 +1,24 @@
+# Model architecture
+dim_model: 512
+num_heads: 8
+window_size: 9
+dropout: 0.1
+num_encoder_layers: 6
+num_decoder_layers: 6
+vocab_size: 25400
+seq_len: 61 #96
+
+# Dataset parameters
+train_test_split: 0.9  # 90% training, 10% validation
+num_workers: 0  # for DataLoader
+
+# Training parameters
+batch_size: 16
+learning_rate: 3e-4
+weight_decay: 0.01
+num_epochs: 3
+grad_clip: 1.0
+
+# Language configuration
+src_lang: 'fr'
+tgt_lang: 'ru'
